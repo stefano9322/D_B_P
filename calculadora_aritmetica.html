@@ -1,0 +1,121 @@
+<html>
+	<head>
+		<script>
+		
+		var a;
+		var b;
+		var op;
+		var res;
+		var dis;
+		function borrar ()
+		{
+			a="0";
+			b="0";
+			op=null;
+			res=1;
+			dis.value="0";
+		}
+		
+		function bot(num)
+		{
+			var temp=num.value;
+			
+			if (temp=='C')
+			{
+				borrar();
+				return;
+			}
+			if(temp =='=')
+			{
+				var resf;
+				switch (op)
+				{
+					case '*':
+						resf=parseFloat(a)*parseFloat(b);
+					break;
+					case '+':
+						resf=parseFloat(a)+parseFloat(b);
+					break;
+					case '-':
+						resf=parseFloat(a)-parseFloat(b);
+					break;
+					case '/':
+						resf=parseFloat(a)/parseFloat(b);
+					break;
+					
+				}
+				dis.value=resf,toString();
+				res =1;
+				return;
+			}
+			if ((temp == '*')||(temp=='+')||(temp=='-')||(temp == '/'))
+			{
+				op=temp;
+				res=2;
+				return;
+			}
+			if ((temp =='.')||(temp >='0')&&(temp<='9'))
+			{
+				if (res ==1)
+				{
+					a+=temp;
+					dis.value=parseFloat(a).toString();
+				}
+				else if(res==2)
+				{
+					b+=temp;
+					dis.value=parseFloat(b).toString();
+				}
+			}
+			
+		}
+		function main()
+		{
+			dis=document.getElementById('display'); 
+			borrar();
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		</script>
+	</head>
+	
+	<body onload="main();">
+		<form>
+			<input type="text" id="display" value="0" />
+			<table>
+				<tr>
+					<td><input type="button" id="limpiar" value="C " onclick="borrar(this);" /></td>
+				</tr>
+				<tr>	
+					<td><input type="button" id="btn7" value="7" onclick="bot(this);" /></td>
+					<td><input type="button" id="btn8" value="8" onclick="bot(this);" /></td>
+					<td><input type="button" id="btn9" value="9" onclick="bot(this);" /></td>
+					<td><input type="button" id="btn+" value="+" onclick="bot(this);" /></td>
+				</tr><tr>	
+					<td><input type="button" id="btn4" value="4" onclick="bot(this);" /></td>
+					<td><input type="button" id="btn5" value="5" onclick="bot(this);" /></td>
+					<td><input type="button" id="btn6" value="6" onclick="bot(this);" /></td>
+					<td><input type="button" id="btn-" value="-" onclick="bot(this);" /></td>
+				</tr><tr>
+					<td><input type="button" id="btn1" value="1" onclick="bot(this);" /></td>
+					<td><input type="button" id="btn2" value="2" onclick="bot(this);" /></td>
+					<td><input type="button" id="btn3" value="3" onclick="bot(this);" /></td>
+					<td><input type="button" id="btn*" value="*" onclick="bot(this);" /></td>
+				</tr><tr>
+					<td><input type="button" id="btn0" value="0" onclick="bot(this);" /></td>
+					<td><input type="button" id="btn." value="." onclick="bot(this);" /></td>
+					<td><input type="button" id="btn=" value="=" onclick="bot(this);" /></td>
+					<td><input type="button" id="btndiv" value="/" onclick="bot(this);" /></td>
+				</tr><tr>
+			</table>
+		</form> 	
+			
+			
+	</body>
+</html>
